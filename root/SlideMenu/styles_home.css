@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 15px;
+  color: white;
+  font-family: Asap, sans-serif;
+}
+.slideMenuNav{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #2D3135;
+	opacity: .9;
+	overflow-x: hidden;
+	transition: 0.7s;
+}
+.slideMenuNav li:hover {
+	border-left: 9px solid #ffffff;
+	background-color: #34383D;
+}
+.slideMenuNav a {
+	display: block;
+	padding: 20px 30px;
+	font-size: 2.5vh;
+	text-decoration: none;
+	color: #ccc;
+}

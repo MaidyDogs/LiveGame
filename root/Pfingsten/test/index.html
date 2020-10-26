@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test - Maidy Dogs</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles_home.css">
+  </head>
+  <body>
+    <div id="content">
+      <script>
+        setInterval( function(){
+        fetch("Spielplan.json")
+          .then(response => response.json())
+          .then(data => {
+            for(var i = 0; i < data.Spiele.length; i++){
+              console.log(data.Spiele[i]);
+            }
+
+
+            let table = document.getElementById("Spielplan").firstElementChild.children[1];
+            for(var i = table.children.length; i > 0; i--){
+              table.childNodes[i].remove();
+            }
+            console.log(table);
+
+            for (let element of data.Spiele) {
+              let row = table.insertRow();
+              for (key in element) {
+                if(key != "active" && key != "done"){
+                  row.insertCell().appendChild(document.createTextNode(element[key]));
+                }
+                if(key == "Score1"){
+                  row.insertCell().appendChild(document.createTextNode(":"));
+                }
+              }
+              if(element["done"] || element["active"]){
+                if(element["Score1"] > element["Score2"]) {
+                  row.insertCell().appendChild(document.createTextNode("3"));
+                  row.insertCell().appendChild(document.createTextNode(":"));
+                  row.insertCell().appendChild(document.createTextNode("0"));
+                } else if(element["Score1"] === element["Score2"]) {
+                  row.insertCell().appendChild(document.createTextNode("1"));
+                  row.insertCell().appendChild(document.createTextNode(":"));
+                  row.insertCell().appendChild(document.createTextNode("1"));
+                } else {
+                  row.insertCell().appendChild(document.createTextNode("0"));
+                  row.insertCell().appendChild(document.createTextNode(":"));
+                  row.insertCell().appendChild(document.createTextNode("3"));
+                }
+              } else {
+                row.insertCell().appendChild(document.createTextNode("0"));
+                row.insertCell().appendChild(document.createTextNode(":"));
+                row.insertCell().appendChild(document.createTextNode("0"));
+              }
+            }
+          })
+        }, 10000);
+        console.log("TEST");
+
+        setInterval( function(){
+        fetch("AkivesSpiel.json")
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById("Time").innerText = data["Time"];
+            fetch("Spielplan.json")
+            .then(response => response.json())
+              .then(data2 => {
+                data2 = data2["Spiele"][data["Id"]];
+                document.getElementsByClassName("Name")[0].innerText = data2["Team1"];
+                document.getElementsByClassName("Name")[1].innerText = data2["Team2"];
+                document.getElementsByClassName("Score")[0].innerText = data2["Score1"];
+                document.getElementsByClassName("Score")[2].innerText = data2["Score2"];
+                fetch("Logos.json")
+                  .then(response => response.json())
+                  .then(data3 => {
+                    document.getElementsByClassName("img")[0].firstChild.src = data3[data2["Team1"]];
+                    document.getElementsByClassName("img")[1].firstChild.src = data3[data2["Team2"]];
+            })
+            })
+          })
+        }, 1000);
+      </script>
+
+    </div>
+  </body>
+</html>

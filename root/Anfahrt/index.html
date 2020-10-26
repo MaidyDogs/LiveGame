@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HOME - Maidy Dogs</title>
+    <link rel="stylesheet" href="styles_home.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+    <header>
+      <script>
+        function openSlideMenu(){
+          
+          if(isMobile()){
+            document.getElementById('slideMenu').style.width = '100vw';
+            document.getElementById('content').style.marginLeft = '100vw';
+            document.getElementById('bgImage').style.width = '0px';
+            document.getElementById('bgImage').style.left = '100vw';
+            
+          } else {
+            document.getElementById('slideMenu').style.width = (screen.availHeight/2.5)+'px';
+            document.getElementById('content').style.marginLeft = (screen.availHeight/2.5)+'px';
+            document.getElementById('bgImage').style.width = (screen.availWidth-(screen.availHeight/2.5))+'px';
+            document.getElementById('bgImage').style.left = (screen.availHeight/2.5)+'px';
+            document.getElementById('content').style.width = (screen.availWidth-(screen.availHeight/2.5))+'px';
+          }
+          
+        }
+        function closeSlideMenu(){
+          document.getElementById('slideMenu').style.width = '0px';
+          document.getElementById('content').style.marginLeft = '0px';
+          document.getElementById('bgImage').style.width = '100vw';
+          document.getElementById('bgImage').style.left = '0px';
+          document.getElementById('content').style.width = '100vw';
+        }
+        function slideMenu(){
+          if(document.getElementById('slideMenu').style.width != '0px'){
+            closeSlideMenu();
+          } else {
+            openSlideMenu();
+          }
+        }
+        function isMobile(){
+          return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)  
+        }
+
+      </script> <!-- Menu logic -->
+    </header>
+    <div id="content">
+      <div id="ribbon" class="ribbon">
+        <h1>Ahauser Maidy Dogs</h1>
+      </div>
+      <span class="slide">
+        <a onclick="slideMenu()">
+          <img src="/images/slideMenu.png" width="50" height="50">
+        </a>
+      </span>
+      <div id="slideMenu" class="slideMenuNav">
+        <iframe src="/MaidyDogs/SlideMenu/" scrolling="no"></iframe>
+      </div>
+      <script>
+        document.getElementById('slideMenu').style.width = '0px';
+      </script> <!-- Organises menu on mobile-->
+      <script>
+        window.onscroll = function() {setSticky()};
+
+        var ribbon = document.getElementById("ribbon");
+        var sticky = ribbon.offsetTop;
+
+        function setSticky() {
+          if (window.pageYOffset >= sticky) {
+            ribbon.classList.add("sticky")
+          } else {
+            ribbon.classList.remove("sticky");
+          }
+        }
+      </script>
+      <div id="map">
+        <iframe src="https://maps.google.com/maps?q=Ahauser%20Maidy%20Dogs%20e.V.&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+
+    </div>
+  </body>
+</html>

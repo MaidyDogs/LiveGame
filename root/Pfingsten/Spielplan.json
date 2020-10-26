@@ -1,0 +1,50 @@
+{
+    "Spiele": [
+        {
+            "Number": 1,
+            "Date": "Fr 12:00",
+            "Team1": "Ahauser Maidy Dogs",
+            "Team2": "Ahauser Maidy Dogs",
+            "Score1": 1,
+            "Score2": 2,
+            "active": false,
+            "done": true
+        },{
+            "Number": 2,
+            "Date": "Fr 12:30",
+            "Team1": "Ahauser Maidy Dogs",
+            "Team2": "Ahauser Maidy Dogs",
+            "Score1": 4,
+            "Score2": 2,
+            "active": true,
+            "done":false
+        },{
+            "Number": 3,
+            "Date": "Fr 13:00",
+            "Team1": "Ahauser Maidy Dogs",
+            "Team2": "Ahauser Maidy Dogs",
+            "Score1": 0,
+            "Score2": 0,
+            "active": false,
+            "done":false
+        },{
+            "Number": 4,
+            "Date": "Fr 13:30",
+            "Team1": "Ahauser Maidy Dogs",
+            "Team2": "Ahauser Maidy Dogs",
+            "Score1": 0,
+            "Score2": 0,
+            "active": false,
+            "done":false
+        },{
+            "Number": 5,
+            "Date": "Fr 14:00",
+            "Team1": "Ahauser Maidy Dogs",
+            "Team2": "Ahauser Maidy Dogs",
+            "Score1": 0,
+            "Score2": 0,
+            "active": false,
+            "done":false
+        }
+    ]
+}
